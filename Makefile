@@ -44,7 +44,7 @@ down: ## Step 5: Stop containers while retaining volumes and local files
 	-$(COMPOSE) stop
 
 _clean-files:
-	rm -rvf -- dags logs plugins config .env
+	rm -rvf -- dags logs plugins config
 
 clean: ## Step 6: Remove containers, volumes, and local lab files
 	-$(COMPOSE) down --volumes --remove-orphans

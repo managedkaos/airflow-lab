@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 AIRFLOW_VERSION ?= stable
-COMPOSE := docker compose -f docker-compose.yaml
+COMPOSE := docker compose --file docker-compose.yaml
 
 .NOTPARALLEL:
 .PHONY: help _download env setup init up up-examples logs down clean nuke _clean-files
@@ -10,9 +10,9 @@ help: ## Display available targets
 
 _download: # Step 0: Download and configure the latest official Compose file
 	@echo "Downloading the latest official Compose file for Airflow $(AIRFLOW_VERSION)"
-	@set -eu; temporary=$$(mktemp ./docker-compose.yaml.XXXXXX); \
+	@set -o errexit -o nounset; temporary=$$(mktemp ./docker-compose.yaml.XXXXXX); \
 	trap 'rm -f "$$temporary"' EXIT; \
-	curl -fLsS 'https://airflow.apache.org/docs/apache-airflow/$(AIRFLOW_VERSION)/docker-compose.yaml' -o "$$temporary"; \
+	curl --fail --location --silent --show-error 'https://airflow.apache.org/docs/apache-airflow/$(AIRFLOW_VERSION)/docker-compose.yaml' --output "$$temporary"; \
 	python3 scripts/airflow_setup.py compose "$$temporary"; \
 	mv "$$temporary" docker-compose.yaml
 	@ls -ltr docker-compose.yaml
@@ -27,17 +27,30 @@ setup: _download _env ## Step 1: Download Compose and prepare the local environm
 init: ## Step 2: Initialize the Airflow database and default account
 	$(COMPOSE) run --rm airflow-init
 
-up: ## Step 3: Initialize and start Airflow with a bare environment
+up: ## Step 3.1: Initialize and start Airflow with a bare environment
 	@python3 scripts/airflow_setup.py examples false
 	@$(MAKE) init
-	$(COMPOSE) up -d
+	$(COMPOSE) up --detach
+	@echo
+	@echo "-----------------------------------------------------------------------------------"
+	@echo "Airflow is running at http://localhost:8080 (username: airflow, password: airflow)"
+	@echo "-----------------------------------------------------------------------------------"
 
-up-examples: ## Step 3+: Initialize and start Airflow with example DAGs
+up-examples: ## Step 3.2: Initialize and start Airflow with example DAGs
 	@python3 scripts/airflow_setup.py examples true
 	@$(MAKE) init
-	$(COMPOSE) up -d
+	$(COMPOSE) up --detach
 
-logs: ## Step 4: Follow logs from all Compose services
+shell: ## Step 4.0: Open an interactive bash session inside the worker container
+	-$(COMPOSE) exec -it airflow-worker bash
+
+status: ## Step 4.1: Show the status of all Compose services
+	@echo "-----------------------------------------------------------------------------------"
+	@$(COMPOSE) ps --format "table {{.Name}}\t{{.Service}}\t{{.CreatedAt}}\t{{.Status}}"
+	@echo "-----------------------------------------------------------------------------------"
+	@$(COMPOSE) stats --no-stream
+
+logs: ## Step 4.2: Follow logs from all Compose services (ctrl+c to exit)
 	-$(COMPOSE) logs --follow
 
 down: ## Step 5: Stop containers while retaining volumes and local files

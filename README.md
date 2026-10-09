@@ -8,7 +8,7 @@ Install Docker Desktop, `make`, `curl`, and Python 3. Allocate at least 4 GB of 
 
 ```bash
 make setup
-make start
+make up
 ```
 
 `setup` downloads the latest stable [official Compose template](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html) and configures it to read the Fernet key and example setting from `.env`. It uses your macOS/Linux UID, generates a Fernet key with the downloaded template's Airflow image, and preserves an existing key. To select a version, use `make setup AIRFLOW_VERSION=3.3.2`. Downloading replaces the existing Compose file.
@@ -16,21 +16,44 @@ make start
 | Command | Action |
 | --- | --- |
 | `make` | Show available targets |
-| `make download` | Download and configure the latest Compose template |
-| `make env` | Prepare `.env` and local directories |
+| `make setup` | Download Compose, prepare `.env`, and create local directories |
 | `make init` | Initialize the database and default account |
-| `make start` | Initialize and start without examples |
-| `make start-examples` | Initialize and start with examples |
+| `make up` | Initialize and start without examples |
+| `make up-examples` | Initialize and start with examples |
+| `make shell` | Open Bash in the running Airflow worker; type `exit` to leave |
+| `make status` | Show service status and a snapshot of resource usage |
 | `make logs` | Follow service logs; press Ctrl+C to exit |
-| `make stop` | Stop containers and retain all data |
+| `make down` | Stop containers and retain all data |
 | `make clean` | Remove containers, volumes, and local lab files |
 | `make nuke` | Clean and remove all images used by this stack |
 
 Open <http://localhost:8080> after services become healthy; the default login is `airflow` / `airflow`.
 
-Switching startup targets preserves the database, so previously loaded examples may remain. For a fresh database without examples, run `make clean`, then `make start`.
+Run `make setup` before the first `make init`, `make up`, or `make up-examples`; those targets expect the Compose file, `.env`, and local directories to exist. `up` and `up-examples` both run initialization, so a separate `make init` is optional. The `_download` and `_env` targets are internal setup helpers.
 
-**`clean` and `nuke` delete all database metadata and the local `dags`, `logs`, `plugins`, `config`, `.env`, and `docker-compose.yaml` files.** Save custom workflows before running them. The Makefile, setup script, README, and other repository files remain. `nuke` removes stack images, not unrelated Docker images.
+Switching startup targets preserves the database, so previously loaded examples may remain. For a fresh database without examples, save custom workflows, run `make clean`, then `make setup` and `make up`. Setup recreates the deleted local directories and downloads Compose again.
+
+**`clean` and `nuke` delete all database metadata and the local `dags`, `logs`, `plugins`, and `config` directories, including custom workflows.** They retain `.env`, `docker-compose.yaml`, and other repository files. `nuke` also removes all images used by this stack. `clean` ignores errors from Compose shutdown and proceeds with local file deletion; `nuke` requires shutdown to succeed before deleting local files.
+
+## Inspect Python libraries in the worker
+
+With the environment running, open an interactive Bash session in the Airflow worker container:
+
+```bash
+make shell
+```
+
+At the container's shell prompt, list the installed Python libraries and their versions:
+
+```bash
+pip list
+```
+
+These are the packages available inside the worker container, where Airflow tasks execute. To leave the container shell and return to your local terminal, run:
+
+```bash
+exit
+```
 
 ## Local setup
 
@@ -44,13 +67,13 @@ Based on the official [Airflow Docker Compose guide](https://airflow.apache.org/
    cd airflow-lab
    ```
 
-   This repository includes `docker-compose.yaml` for Airflow 3.3.2. For a separate, fresh project, download the template with:
+   The following manual example targets Airflow 3.3.2; `make setup` downloads the latest stable version by default. For a separate, fresh project, download the template with:
 
    ```bash
    curl -LfO 'https://airflow.apache.org/docs/apache-airflow/3.3.2/docker-compose.yaml'
    ```
 
-   Download the YAML file itself, not the documentation HTML page. Keep this repository's configuration: it references `FERNET_KEY` from `.env`.
+   Download the YAML file itself, not the documentation HTML page. In its shared Airflow environment, set `AIRFLOW__CORE__FERNET_KEY: ${FERNET_KEY}` so the key in step 5 is used. `make setup` applies this change automatically.
 
 3. Create the local directories:
 
@@ -91,7 +114,7 @@ Based on the official [Airflow Docker Compose guide](https://airflow.apache.org/
 7. Start services and check their status:
 
    ```bash
-   docker compose up -d
+   docker compose up --detach
    docker compose ps
    ```
 
@@ -111,7 +134,7 @@ Based on the official [Airflow Docker Compose guide](https://airflow.apache.org/
    AIRFLOW__CORE__LOAD_EXAMPLES: ${AIRFLOW__CORE__LOAD_EXAMPLES:-false}
    ```
 
-   The explicit Compose environment setting overrides `.env`, so both changes are needed for this repository. For a new setup, complete these steps before initializing the database.
+   The explicit Compose environment setting overrides `.env`, so both changes are needed for an unmodified template. `make setup` applies the Compose change automatically, and `make up` sets the `.env` value to `false`. For a new manual setup, complete these steps before initializing the database.
 
 3. For an existing setup, stop the stack and delete the database volume to clear previously loaded examples. **This deletes all Airflow metadata, including run history, stored connections, and custom user accounts.** Local files in `dags`, `logs`, `plugins`, and `config` remain.
 
@@ -125,7 +148,7 @@ Based on the official [Airflow Docker Compose guide](https://airflow.apache.org/
 4. Start Airflow again and check service health:
 
    ```bash
-   docker compose up -d
+   docker compose up --detach
    docker compose ps
    ```
 

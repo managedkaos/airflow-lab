@@ -11,6 +11,11 @@ help: ## Display available targets
 all: spellcheck footer ## Spell-check READMEs and generate footer links
 	@echo "Done."
 
+files:
+	@for file in $(README_FILES); do \
+		printf '\t%s\n' "$$file"; \
+	done
+
 spellcheck: ## Interactively spell-check all README files
 	@echo "Spell checking README files..."
 	@set -o errexit; for file in $(README_FILES); do \

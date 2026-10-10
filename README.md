@@ -2,16 +2,62 @@
 
 A lab to experiment with Apache Airflow.
 
-## Makefile quick start
+## Draft lab table of contents
 
-Install Docker Desktop, `make`, `curl`, and Python 3. Allocate at least 4 GB of Docker memory (8 GB recommended), then run:
+The chapter and lesson READMEs contain goals, planned activities, and checkpoints for discussion. Detailed walkthroughs and DAG code will be added as the lessons are developed. Start with bundled examples for the UI and CLI chapters, then create your own workflow in Chapter 3.
 
-```bash
-make setup
-make up
-```
+- [Chapter 0: Introduction and lab orientation](ch0_intro/README.md)
+  - [00.01: What you will build](ch0_intro/00_01_overview/README.md)
+  - [00.02: Prerequisites and readiness](ch0_intro/00_02_prerequisites/README.md)
+  - [00.03: How the lab environment fits together](ch0_intro/00_03_environment/README.md)
+- [Chapter 1: Explore the Airflow web UI](ch1_web_ui/README.md)
+  - [01.01: Sign in and navigate](ch1_web_ui/01_01_login_navigation/README.md)
+  - [01.02: Read a DAG and its tasks](ch1_web_ui/01_02_dags_tasks/README.md)
+  - [01.03: Inspect runs, task states, and logs](ch1_web_ui/01_03_runs_logs/README.md)
+  - [01.04: Trigger and pause a workflow](ch1_web_ui/01_04_trigger_pause/README.md)
+- [Chapter 2: Explore Airflow through Docker and the CLI](ch2_cli/README.md)
+  - [02.01: Inspect Docker services](ch2_cli/02_01_services/README.md)
+  - [02.02: Open the worker shell](ch2_cli/02_02_worker_shell/README.md)
+  - [02.03: Discover Airflow CLI commands](ch2_cli/02_03_cli_discovery/README.md)
+  - [02.04: Inspect and trigger DAGs from the CLI](ch2_cli/02_04_dags_runs/README.md)
+  - [02.05: Manage the lab lifecycle](ch2_cli/02_05_lifecycle/README.md)
+- [Chapter 3: Write, test, run, and schedule your first DAG](ch3_first_dag/README.md)
+  - [03.01: Design the sample workflow](ch3_first_dag/03_01_design/README.md)
+  - [03.02: Write a TaskFlow DAG](ch3_first_dag/03_02_write/README.md)
+  - [03.03: Validate discovery and imports](ch3_first_dag/03_03_validate/README.md)
+  - [03.04: Test tasks and the complete DAG](ch3_first_dag/03_04_test/README.md)
+  - [03.05: Run and observe the DAG](ch3_first_dag/03_05_run/README.md)
+  - [03.06: Schedule recurring runs](ch3_first_dag/03_06_schedule/README.md)
+- [Chapter 4: Make the workflow more resilient and flexible](ch4_advanced/README.md)
+  - [04.01: Handle failures and retries](ch4_advanced/04_01_retries/README.md)
+  - [04.02: Parameterize the workflow](ch4_advanced/04_02_parameters/README.md)
+  - [04.03: Add branching and trigger rules](ch4_advanced/04_03_branching/README.md)
+  - [04.04: Use XComs and reusable task groups](ch4_advanced/04_04_data_exchange/README.md)
+  - [04.05: Control overlapping work](ch4_advanced/04_05_concurrency/README.md)
+- [Chapter 5: Challenge: build and troubleshoot a workflow](ch5_challenge/README.md)
+  - [05.01: Build a parameterized summary DAG](ch5_challenge/05_01_challenge/README.md)
+  - [05.02: Diagnose a broken workflow](ch5_challenge/05_02_troubleshoot/README.md)
+  - [05.03: Review the challenge solution](ch5_challenge/05_03_solution/README.md)
+- [Chapter 6: Review and close the lab](ch6_conclusion/README.md)
+  - [06.01: Review what you learned](ch6_conclusion/06_01_recap/README.md)
+  - [06.02: Save your work and choose next steps](ch6_conclusion/06_02_next_steps/README.md)
 
-`setup` downloads the latest stable [official Compose template](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html) and configures it to read the Fernet key and example setting from `.env`. It uses your macOS/Linux UID, generates a Fernet key with the downloaded template's Airflow image, and preserves an existing key. To select a version, use `make setup AIRFLOW_VERSION=3.3.2`. Downloading replaces the existing Compose file.
+## Requirements and setup
+
+1. Install Docker Desktop, `make`, `curl`, and Python 3.
+2. Allocate at least 4 GB of memory for Docker (8 GB recommended).
+3. Inside the lab directory, run the following commands to set up and start the lab environment:
+
+  ```bash
+  make setup init up
+  ```
+
+>  [!TIP] `setup` downloads the latest stable [official Compose template](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html) and configures it to read the Fernet key and example setting from `.env`. It uses your macOS/Linux UID, generates a Fernet key with the downloaded template's Airflow image, and preserves an existing key. To select a specific version, use `make setup AIRFLOW_VERSION=3.3.2`. Downloading replaces the existing Compose file.
+
+4. Open <http://localhost:8080> after services become healthy; the default login is `airflow` / `airflow`.
+5. Proceed to the first chapter and lesson.
+
+## Explore the lab environment
 
 | Command | Action |
 | --- | --- |
@@ -27,141 +73,16 @@ make up
 | `make clean` | Remove containers, volumes, and local lab files |
 | `make nuke` | Clean and remove all images used by this stack |
 
-Open <http://localhost:8080> after services become healthy; the default login is `airflow` / `airflow`.
 
 Run `make setup` before the first `make init`, `make up`, or `make up-examples`; those targets expect the Compose file, `.env`, and local directories to exist. `up` and `up-examples` both run initialization, so a separate `make init` is optional. The `_download` and `_env` targets are internal setup helpers.
 
 Switching startup targets preserves the database, so previously loaded examples may remain. For a fresh database without examples, save custom workflows, run `make clean`, then `make setup` and `make up`. Setup recreates the deleted local directories and downloads Compose again.
 
-**`clean` and `nuke` delete all database metadata and the local `dags`, `logs`, `plugins`, and `config` directories, including custom workflows.** They retain `.env`, `docker-compose.yaml`, and other repository files. `nuke` also removes all images used by this stack. `clean` ignores errors from Compose shutdown and proceeds with local file deletion; `nuke` requires shutdown to succeed before deleting local files.
+> [!CAUTION] **`clean` and `nuke` delete all database metadata and the local `dags`, `logs`, `plugins`, and `config` directories, including custom workflows.**
+> They retain `.env`, `docker-compose.yaml`, and other repository files.
+> `nuke` also removes all images used by this stack. `clean` ignores errors from Compose shutdown and proceeds with local file deletion; `nuke` requires shutdown to succeed before deleting local files.
 
-## Inspect Python libraries in the worker
-
-With the environment running, open an interactive Bash session in the Airflow worker container:
-
-```bash
-make shell
-```
-
-At the container's shell prompt, list the installed Python libraries and their versions:
-
-```bash
-pip list
-```
-
-These are the packages available inside the worker container, where Airflow tasks execute. To leave the container shell and return to your local terminal, run:
-
-```bash
-exit
-```
-
-## Local setup
-
-Based on the official [Airflow Docker Compose guide](https://airflow.apache.org/docs/apache-airflow/3.3.2/howto/docker-compose/index.html).
-
-1. Install and start Docker Desktop with Compose v2.14.0 or newer. Allocate at least 4 GB of RAM, ideally 8 GB, in **Settings > Resources**.
-
-2. Open a terminal in this repository:
-
-   ```bash
-   cd airflow-lab
-   ```
-
-   The following manual example targets Airflow 3.3.2; `make setup` downloads the latest stable version by default. For a separate, fresh project, download the template with:
-
-   ```bash
-   curl -LfO 'https://airflow.apache.org/docs/apache-airflow/3.3.2/docker-compose.yaml'
-   ```
-
-   Download the YAML file itself, not the documentation HTML page. In its shared Airflow environment, set `AIRFLOW__CORE__FERNET_KEY: ${FERNET_KEY}` so the key in step 5 is used. `make setup` applies this change automatically.
-
-3. Create the local directories:
-
-   ```bash
-   mkdir -p dags logs plugins config
-   ```
-
-4. Create or edit `.env`. On Linux/macOS, get your user ID with `id -u` and add it as `AIRFLOW_UID`; on Windows, use `50000`:
-
-   ```dotenv
-   AIRFLOW_UID=YOUR_USER_ID
-   ```
-
-   Preserve existing entries when editing `.env`.
-
-5. Generate a Fernet key using the same Airflow version as the lab:
-
-   ```bash
-   docker run --rm apache/airflow:3.3.2 python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
-   ```
-
-   Copy the output into `.env`:
-
-   ```dotenv
-   FERNET_KEY=YOUR_GENERATED_KEY_HERE
-   ```
-
-   This key encrypts stored connection passwords and resolves the unset `FERNET_KEY` warnings in this repository's Compose file. Keep it for subsequent runs; `.env` is ignored by Git.
-
-6. Initialize the metadata database and default account. If you previously saw Fernet warnings, rerun this after completing step 5:
-
-   ```bash
-   docker compose run --rm airflow-init
-   ```
-
-   Wait for successful completion (exit code 0).
-
-7. Start services and check their status:
-
-   ```bash
-   docker compose up --detach
-   docker compose ps
-   ```
-
-8. Once services are healthy, open <http://localhost:8080> and sign in with username `airflow` and password `airflow`.
-
-## Disable example DAGs
-
-1. Add or update this entry in `.env`, preserving your existing user ID and Fernet key:
-
-   ```dotenv
-   AIRFLOW__CORE__LOAD_EXAMPLES=False
-   ```
-
-2. In `docker-compose.yaml`, replace the hardcoded `AIRFLOW__CORE__LOAD_EXAMPLES: 'true'` in the shared Airflow environment with:
-
-   ```yaml
-   AIRFLOW__CORE__LOAD_EXAMPLES: ${AIRFLOW__CORE__LOAD_EXAMPLES:-false}
-   ```
-
-   The explicit Compose environment setting overrides `.env`, so both changes are needed for an unmodified template. `make setup` applies the Compose change automatically, and `make up` sets the `.env` value to `false`. For a new manual setup, complete these steps before initializing the database.
-
-3. For an existing setup, stop the stack and delete the database volume to clear previously loaded examples. **This deletes all Airflow metadata, including run history, stored connections, and custom user accounts.** Local files in `dags`, `logs`, `plugins`, and `config` remain.
-
-   ```bash
-   docker compose down --volumes
-   docker compose run --rm airflow-init
-   ```
-
-   Wait for initialization to finish successfully. It recreates the configured default account (`airflow` / `airflow` unless overridden).
-
-4. Start Airflow again and check service health:
-
-   ```bash
-   docker compose up --detach
-   docker compose ps
-   ```
-
-   Open <http://localhost:8080>. Example DAGs should be absent; any custom DAGs in `./dags` will still appear.
-
-## Management
-
-| Action | Command |
-| --- | --- |
-| Check status | `docker compose ps` |
-| Stop services and retain database data | `docker compose down` |
-| Reset the database and remove service images | `docker compose down --volumes --rmi all` |
-
-The reset command deletes the PostgreSQL volume; local DAGs, logs, plugins, and configuration directories remain.
-
-For custom Python dependencies, extend the Airflow image with a `Dockerfile` and `requirements.txt`, configure `build: .` in Compose, and rebuild with `docker compose build`.
+<!-- FooterStart -->
+---
+[00.01: What you will build →](ch0_intro/00_01_overview/README.md)
+<!-- FooterEnd -->

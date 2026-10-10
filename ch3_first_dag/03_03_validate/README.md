@@ -16,8 +16,6 @@ Confirm that Airflow can load the DAG before trying to execute it.
 
 The DAG appears in Airflow without import errors.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
 [← 03.02: Write a TaskFlow DAG](../03_02_write/README.md) | [03.04: Test tasks and the complete DAG →](../03_04_test/README.md)

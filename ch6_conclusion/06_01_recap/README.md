@@ -16,9 +16,7 @@ Connect the lab exercises into a complete workflow development process.
 
 Describe how you would develop and troubleshoot a new workflow independently.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
-[← Chapter 5: Challenge: build and troubleshoot a workflow](../../ch5_challenge/README.md) | [06.02: Save your work and choose next steps →](../06_02_next_steps/README.md)
+[← 05.03: Review the challenge solution](../../ch5_challenge/05_03_solution/README.md) | [06.02: Save your work and choose next steps →](../06_02_next_steps/README.md)
 <!-- FooterEnd -->

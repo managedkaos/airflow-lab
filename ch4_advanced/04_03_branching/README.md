@@ -16,8 +16,6 @@ Choose a task path based on the transformed data.
 
 Both branch scenarios finish with the expected task states.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
 [← 04.02: Parameterize the workflow](../04_02_parameters/README.md) | [04.04: Use XComs and reusable task groups →](../04_04_data_exchange/README.md)

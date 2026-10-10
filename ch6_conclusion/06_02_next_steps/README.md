@@ -16,9 +16,7 @@ Close the lab intentionally and identify a direction for further practice.
 
 Your work is saved and the environment is in the state you intended.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
-[← 06.01: Review what you learned](../06_01_recap/README.md) | [Chapter 6: Review and close the lab →](../README.md)
+[← 06.01: Review what you learned](../06_01_recap/README.md) | [Airflow Lab →](../../README.md)
 <!-- FooterEnd -->

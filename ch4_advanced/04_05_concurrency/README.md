@@ -16,9 +16,7 @@ Use resource limits to keep repeated runs predictable.
 
 Explain the difference between limiting execution and making task logic repeatable.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
-[← 04.04: Use XComs and reusable task groups](../04_04_data_exchange/README.md) | [Chapter 4: Make the workflow more resilient and flexible →](../README.md)
+[← 04.04: Use XComs and reusable task groups](../04_04_data_exchange/README.md) | [05.01: Build a parameterized summary DAG →](../../ch5_challenge/05_01_challenge/README.md)
 <!-- FooterEnd -->

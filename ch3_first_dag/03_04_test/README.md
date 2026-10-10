@@ -16,8 +16,6 @@ Check the workflow's behavior before relying on scheduled execution.
 
 The tested workflow produces the expected result.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
 [← 03.03: Validate discovery and imports](../03_03_validate/README.md) | [03.05: Run and observe the DAG →](../03_05_run/README.md)

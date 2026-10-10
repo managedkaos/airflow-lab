@@ -16,8 +16,6 @@ Inspect the Python environment inside the container where tasks execute.
 
 Distinguish commands run on the host from commands run inside the worker.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
 [← 02.01: Inspect Docker services](../02_01_services/README.md) | [02.03: Discover Airflow CLI commands →](../02_03_cli_discovery/README.md)

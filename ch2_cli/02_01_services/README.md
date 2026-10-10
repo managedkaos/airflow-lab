@@ -16,9 +16,7 @@ Connect service status and resource usage with the environment you explored in t
 
 Identify which service to inspect when a workflow does not appear or a task does not run.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
-[← Chapter 1: Explore the Airflow web UI](../../ch1_web_ui/README.md) | [02.02: Open the worker shell →](../02_02_worker_shell/README.md)
+[← 01.04: Trigger and pause a workflow](../../ch1_web_ui/01_04_trigger_pause/README.md) | [02.02: Open the worker shell →](../02_02_worker_shell/README.md)
 <!-- FooterEnd -->

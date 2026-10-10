@@ -16,9 +16,7 @@ Practice controlling a small example workflow from the UI.
 
 Identify the manual run and explain the difference between triggering and scheduling.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
-[← 01.03: Inspect runs, task states, and logs](../01_03_runs_logs/README.md) | [Chapter 1: Explore the Airflow web UI →](../README.md)
+[← 01.03: Inspect runs, task states, and logs](../01_03_runs_logs/README.md) | [02.01: Inspect Docker services →](../../ch2_cli/02_01_services/README.md)
 <!-- FooterEnd -->

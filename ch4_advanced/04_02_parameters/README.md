@@ -16,8 +16,6 @@ Change workflow behavior without editing the DAG for each run.
 
 Two runs with different inputs produce the expected different results.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
 [← 04.01: Handle failures and retries](../04_01_retries/README.md) | [04.03: Add branching and trigger rules →](../04_03_branching/README.md)

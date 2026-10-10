@@ -16,9 +16,7 @@ Plan the inputs, tasks, and observable output before writing code.
 
 State what a successful run should produce.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
-[← Chapter 2: Explore Airflow through Docker and the CLI](../../ch2_cli/README.md) | [03.02: Write a TaskFlow DAG →](../03_02_write/README.md)
+[← 02.05: Manage the lab lifecycle](../../ch2_cli/02_05_lifecycle/README.md) | [03.02: Write a TaskFlow DAG →](../03_02_write/README.md)
 <!-- FooterEnd -->

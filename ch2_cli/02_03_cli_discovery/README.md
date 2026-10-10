@@ -16,8 +16,6 @@ Find the commands supported by the installed Airflow version.
 
 Find the help for a command before choosing its arguments.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
 [← 02.02: Open the worker shell](../02_02_worker_shell/README.md) | [02.04: Inspect and trigger DAGs from the CLI →](../02_04_dags_runs/README.md)

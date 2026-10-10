@@ -16,8 +16,6 @@ Follow a workflow from a DAG run down to one task's logs.
 
 Trace one task result back to its logs.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
 [← 01.02: Read a DAG and its tasks](../01_02_dags_tasks/README.md) | [01.04: Trigger and pause a workflow →](../01_04_trigger_pause/README.md)

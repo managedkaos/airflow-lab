@@ -16,9 +16,7 @@ Practice stopping and resuming the local environment while preserving data.
 
 Choose the correct target for a restart versus a deliberate reset.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
-[← 02.04: Inspect and trigger DAGs from the CLI](../02_04_dags_runs/README.md) | [Chapter 2: Explore Airflow through Docker and the CLI →](../README.md)
+[← 02.04: Inspect and trigger DAGs from the CLI](../02_04_dags_runs/README.md) | [03.01: Design the sample workflow →](../../ch3_first_dag/03_01_design/README.md)
 <!-- FooterEnd -->

@@ -16,9 +16,7 @@ Connect the repository directories with the services running in Docker.
 
 Explain where DAG code lives, where tasks run, and which data persists.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
-[← 00.02: Prerequisites and readiness](../00_02_prerequisites/README.md) | [Chapter 0: Introduction and lab orientation →](../README.md)
+[← 00.02: Prerequisites and readiness](../00_02_prerequisites/README.md) | [01.01: Sign in and navigate →](../../ch1_web_ui/01_01_login_navigation/README.md)
 <!-- FooterEnd -->

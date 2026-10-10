@@ -16,9 +16,7 @@ Find the main areas of the Airflow interface.
 
 Locate an example DAG and open its details.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
-[← Chapter 0: Introduction and lab orientation](../../ch0_intro/README.md) | [01.02: Read a DAG and its tasks →](../01_02_dags_tasks/README.md)
+[← 00.03: How the lab environment fits together](../../ch0_intro/00_03_environment/README.md) | [01.02: Read a DAG and its tasks →](../01_02_dags_tasks/README.md)
 <!-- FooterEnd -->

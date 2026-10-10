@@ -16,9 +16,7 @@ Use a controlled failure to learn how Airflow recovers from task errors.
 
 Explain retry behavior using evidence from task attempts.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
-[← Chapter 3: Write, test, run, and schedule your first DAG](../../ch3_first_dag/README.md) | [04.02: Parameterize the workflow →](../04_02_parameters/README.md)
+[← 03.06: Schedule recurring runs](../../ch3_first_dag/03_06_schedule/README.md) | [04.02: Parameterize the workflow →](../04_02_parameters/README.md)
 <!-- FooterEnd -->

@@ -16,9 +16,7 @@ Create a new workflow that demonstrates the skills from the lab.
 
 Provide the DAG file, a successful normal run, an empty-result run, and evidence of the scheduled run.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
-[← Chapter 4: Make the workflow more resilient and flexible](../../ch4_advanced/README.md) | [05.02: Diagnose a broken workflow →](../05_02_troubleshoot/README.md)
+[← 04.05: Control overlapping work](../../ch4_advanced/04_05_concurrency/README.md) | [05.02: Diagnose a broken workflow →](../05_02_troubleshoot/README.md)
 <!-- FooterEnd -->

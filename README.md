@@ -1,4 +1,4 @@
-# airflow-lab
+# Airflow Lab
 
 A lab to experiment with Apache Airflow.
 

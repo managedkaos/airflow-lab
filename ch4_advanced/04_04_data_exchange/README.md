@@ -16,8 +16,6 @@ Understand small task outputs and organize a growing workflow.
 
 Explain what data moves between tasks and how grouping improves navigation.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
 [← 04.03: Add branching and trigger rules](../04_03_branching/README.md) | [04.05: Control overlapping work →](../04_05_concurrency/README.md)

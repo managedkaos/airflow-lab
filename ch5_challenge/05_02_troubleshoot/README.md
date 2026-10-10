@@ -16,8 +16,6 @@ Use both the UI and Docker-backed CLI to locate and explain a failure.
 
 Explain the cause, the evidence, and how you confirmed the repair.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
 [← 05.01: Build a parameterized summary DAG](../05_01_challenge/README.md) | [05.03: Review the challenge solution →](../05_03_solution/README.md)

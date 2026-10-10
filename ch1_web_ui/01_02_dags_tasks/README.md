@@ -16,8 +16,6 @@ Relate a DAG's code and dependencies to its visual presentation.
 
 Explain the order in which the selected DAG's tasks should execute.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
 [← 01.01: Sign in and navigate](../01_01_login_navigation/README.md) | [01.03: Inspect runs, task states, and logs →](../01_03_runs_logs/README.md)

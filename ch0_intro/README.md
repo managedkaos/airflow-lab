@@ -1,4 +1,4 @@
-# Chapter 0: Introduction and lab orientation
+# 0: Introduction and lab orientation
 
 Draft chapter outline for discussion and lesson development.
 
@@ -10,9 +10,4 @@ Understand the lab goals, confirm prerequisites, and map the local environment.
 2. [Prerequisites and readiness](00_02_prerequisites/README.md)
 3. [How the lab environment fits together](00_03_environment/README.md)
 
-[Back to the lab](../README.md)
-
-<!-- FooterStart -->
----
-[← 00.03: How the lab environment fits together](00_03_environment/README.md) | [01.01: Sign in and navigate →](../ch1_web_ui/01_01_login_navigation/README.md)
-<!-- FooterEnd -->
+<!-- FooterSkip -->

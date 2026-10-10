@@ -16,8 +16,6 @@ Confirm that the existing local lab is ready for the exercises.
 
 The services are healthy and you know which Airflow version you are using.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
 [← 00.01: What you will build](../00_01_overview/README.md) | [00.03: How the lab environment fits together →](../00_03_environment/README.md)

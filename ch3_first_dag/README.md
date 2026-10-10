@@ -1,4 +1,4 @@
-# Chapter 3: Write, test, run, and schedule your first DAG
+# 3: Write, test, run, and schedule your first DAG
 
 Draft chapter outline for discussion and lesson development.
 
@@ -17,9 +17,4 @@ Build a small Python workflow with no external account or service dependencies.
 
 [Official Apache Airflow documentation](https://airflow.apache.org/docs/apache-airflow/stable/tutorial/taskflow.html)
 
-[Back to the lab](../README.md)
-
-<!-- FooterStart -->
----
-[← 03.06: Schedule recurring runs](03_06_schedule/README.md) | [04.01: Handle failures and retries →](../ch4_advanced/04_01_retries/README.md)
-<!-- FooterEnd -->
+<!-- FooterSkip -->

@@ -16,9 +16,7 @@ Preview a small workflow that extracts sample records, transforms them, and summ
 
 Describe the workflow and the skills you will practice.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
-[← airflow-lab](../../README.md) | [00.02: Prerequisites and readiness →](../00_02_prerequisites/README.md)
+[← Airflow Lab](../../README.md) | [00.02: Prerequisites and readiness →](../00_02_prerequisites/README.md)
 <!-- FooterEnd -->

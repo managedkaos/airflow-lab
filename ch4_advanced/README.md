@@ -1,4 +1,4 @@
-# Chapter 4: Make the workflow more resilient and flexible
+# 4: Make the workflow more resilient and flexible
 
 Draft chapter outline for discussion and lesson development.
 
@@ -12,9 +12,4 @@ Extend the sample DAG with practical reliability, control-flow, and configuratio
 4. [Use XComs and reusable task groups](04_04_data_exchange/README.md)
 5. [Control overlapping work](04_05_concurrency/README.md)
 
-[Back to the lab](../README.md)
-
-<!-- FooterStart -->
----
-[← 04.05: Control overlapping work](04_05_concurrency/README.md) | [05.01: Build a parameterized summary DAG →](../ch5_challenge/05_01_challenge/README.md)
-<!-- FooterEnd -->
+<!-- FooterSkip -->

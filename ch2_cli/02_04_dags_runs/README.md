@@ -16,8 +16,6 @@ Operate a selected example DAG without using the UI to start it.
 
 Correlate a CLI operation with its resulting DAG run in the UI.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
 [← 02.03: Discover Airflow CLI commands](../02_03_cli_discovery/README.md) | [02.05: Manage the lab lifecycle →](../02_05_lifecycle/README.md)

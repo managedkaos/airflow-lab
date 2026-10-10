@@ -16,9 +16,7 @@ Move from manual execution to a short, observable schedule.
 
 Explain when the next run is expected and distinguish it from a manual run.
 
-[Chapter overview](../README.md) | [Lab overview](../../README.md)
-
 <!-- FooterStart -->
 ---
-[← 03.05: Run and observe the DAG](../03_05_run/README.md) | [Chapter 3: Write, test, run, and schedule your first DAG →](../README.md)
+[← 03.05: Run and observe the DAG](../03_05_run/README.md) | [04.01: Handle failures and retries →](../../ch4_advanced/04_01_retries/README.md)
 <!-- FooterEnd -->

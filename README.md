@@ -7,44 +7,25 @@ A lab to experiment with Apache Airflow.
 The chapter and lesson READMEs contain goals, planned activities, and checkpoints for discussion. Detailed walkthroughs and DAG code will be added as the lessons are developed. Start with bundled examples for the UI and CLI chapters, then create your own workflow in Chapter 3.
 
 - [Chapter 0: Introduction and lab orientation](ch0_intro/README.md)
-  - [00.01: What you will build](ch0_intro/00_01_overview/README.md)
-  - [00.02: Prerequisites and readiness](ch0_intro/00_02_prerequisites/README.md)
-  - [00.03: How the lab environment fits together](ch0_intro/00_03_environment/README.md)
 - [Chapter 1: Explore the Airflow web UI](ch1_web_ui/README.md)
-  - [01.01: Sign in and navigate](ch1_web_ui/01_01_login_navigation/README.md)
-  - [01.02: Read a DAG and its tasks](ch1_web_ui/01_02_dags_tasks/README.md)
-  - [01.03: Inspect runs, task states, and logs](ch1_web_ui/01_03_runs_logs/README.md)
-  - [01.04: Trigger and pause a workflow](ch1_web_ui/01_04_trigger_pause/README.md)
 - [Chapter 2: Explore Airflow through Docker and the CLI](ch2_cli/README.md)
-  - [02.01: Inspect Docker services](ch2_cli/02_01_services/README.md)
-  - [02.02: Open the worker shell](ch2_cli/02_02_worker_shell/README.md)
-  - [02.03: Discover Airflow CLI commands](ch2_cli/02_03_cli_discovery/README.md)
-  - [02.04: Inspect and trigger DAGs from the CLI](ch2_cli/02_04_dags_runs/README.md)
-  - [02.05: Manage the lab lifecycle](ch2_cli/02_05_lifecycle/README.md)
 - [Chapter 3: Write, test, run, and schedule your first DAG](ch3_first_dag/README.md)
-  - [03.01: Design the sample workflow](ch3_first_dag/03_01_design/README.md)
-  - [03.02: Write a TaskFlow DAG](ch3_first_dag/03_02_write/README.md)
-  - [03.03: Validate discovery and imports](ch3_first_dag/03_03_validate/README.md)
-  - [03.04: Test tasks and the complete DAG](ch3_first_dag/03_04_test/README.md)
-  - [03.05: Run and observe the DAG](ch3_first_dag/03_05_run/README.md)
-  - [03.06: Schedule recurring runs](ch3_first_dag/03_06_schedule/README.md)
 - [Chapter 4: Make the workflow more resilient and flexible](ch4_advanced/README.md)
-  - [04.01: Handle failures and retries](ch4_advanced/04_01_retries/README.md)
-  - [04.02: Parameterize the workflow](ch4_advanced/04_02_parameters/README.md)
-  - [04.03: Add branching and trigger rules](ch4_advanced/04_03_branching/README.md)
-  - [04.04: Use XComs and reusable task groups](ch4_advanced/04_04_data_exchange/README.md)
-  - [04.05: Control overlapping work](ch4_advanced/04_05_concurrency/README.md)
 - [Chapter 5: Challenge: build and troubleshoot a workflow](ch5_challenge/README.md)
-  - [05.01: Build a parameterized summary DAG](ch5_challenge/05_01_challenge/README.md)
-  - [05.02: Diagnose a broken workflow](ch5_challenge/05_02_troubleshoot/README.md)
-  - [05.03: Review the challenge solution](ch5_challenge/05_03_solution/README.md)
 - [Chapter 6: Review and close the lab](ch6_conclusion/README.md)
-  - [06.01: Review what you learned](ch6_conclusion/06_01_recap/README.md)
-  - [06.02: Save your work and choose next steps](ch6_conclusion/06_02_next_steps/README.md)
 
 ## Requirements and setup
 
-1. Install Docker Desktop, `make`, `curl`, and Python 3.
+1. You'll need to have the following tools installed:
+
+  - A container management system:
+    - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+    - [Podman](https://podman.io/)
+    - [Orbstack](https://orbstack.dev/)
+  - `python3`
+  - `make`
+  - `curl`
+
 2. Allocate at least 4 GB of memory for Docker (8 GB recommended).
 3. Inside the lab directory, run the following commands to set up and start the lab environment:
 
